@@ -100,6 +100,14 @@ inline NANOTAP_DECLARE void is(T got, U expected) {
 /**
  * shorthand for lazy person
  */
+template <class T>
+inline NANOTAP_DECLARE void is(T got, T expected) {
+    is(got, expected, NULL);
+}
+
+/**
+ * shorthand for lazy person
+ */
 inline NANOTAP_DECLARE void ok(int x) {
     ok(x, "");
 }
