@@ -49,8 +49,8 @@ NANOTAP_INLINE NANOTAP_DECLARE void contains_string(const char *string, const ch
 }
 
 /**
- *  If you don’t know how many tests you’re going to run, you can issue
- * the plan when you’re done running tests.
+ *  If you don't know how many tests you're going to run, you can issue
+ * the plan when you're done running tests.
  */
 NANOTAP_INLINE NANOTAP_DECLARE void done_testing() {
     printf("1..%d\n", TEST_COUNT);
