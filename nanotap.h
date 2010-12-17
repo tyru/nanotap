@@ -74,7 +74,7 @@ inline NANOTAP_DECLARE void diag(const std::string &msg) {
  * flexible is() based on C++ template.
  */
 template <class T>
-inline NANOTAP_DECLARE void is(T got, T expected, const char *msg) {
+inline NANOTAP_DECLARE void is(const T& got, const T& expected, const char *msg) {
     if (got == expected) {
         ok(true, msg);
     } else {
@@ -93,7 +93,7 @@ inline NANOTAP_DECLARE void is(const char* got, const std::string & expected, co
 }
 
 template <class T, class U>
-inline NANOTAP_DECLARE void is(T got, U expected) {
+inline NANOTAP_DECLARE void is(const T& got, const U& expected) {
     is(got, std::string(expected), NULL);
 }
 
@@ -101,7 +101,7 @@ inline NANOTAP_DECLARE void is(T got, U expected) {
  * shorthand for lazy person
  */
 template <class T>
-inline NANOTAP_DECLARE void is(T got, T expected) {
+inline NANOTAP_DECLARE void is(const T& got, const T& expected) {
     is(got, expected, NULL);
 }
 
