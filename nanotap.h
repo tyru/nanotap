@@ -29,11 +29,26 @@ NANOTAP_INLINE NANOTAP_DECLARE void ok(int x, const char *msg) {
 }
 
 /**
+ * shorthand for std::string
+ */
+NANOTAP_INLINE NANOTAP_DECLARE void ok(int x, const std::string& msg) {
+    ok(x, msg.c_str());
+}
+
+/**
  * display diagnostics message.
  */
 NANOTAP_INLINE NANOTAP_DECLARE void diag(const char *msg) {
     fprintf(stderr, "# %s\n", msg ? msg : "");
 }
+
+/**
+ * shorthand for std::string
+ */
+inline NANOTAP_DECLARE void diag(const std::string &msg) {
+    diag(msg.c_str());
+}
+
 /**
  * display note message.
  */
@@ -42,10 +57,24 @@ NANOTAP_INLINE NANOTAP_DECLARE void note(const char *msg) {
 }
 
 /**
+ * shorthand for std::string
+ */
+NANOTAP_INLINE NANOTAP_DECLARE void note(const std::string& msg) {
+    note(msg.c_str());
+}
+
+/**
  * contains_string() searches for $substring in $string.
  */
 NANOTAP_INLINE NANOTAP_DECLARE void contains_string(const char *string, const char *substring, const char *msg) {
     ok(strstr(string, substring) != NULL, msg);
+}
+
+/**
+ * shorthand for std::string
+ */
+NANOTAP_INLINE NANOTAP_DECLARE void contains_string(const char *string, const char *substring, const std::string& msg) {
+    contains_string(string, substring, msg.c_str());
 }
 
 /**
@@ -64,13 +93,6 @@ NANOTAP_INLINE NANOTAP_DECLARE void done_testing() {
 #include <iostream>
 
 /**
- * shorthand for std::string
- */
-inline NANOTAP_DECLARE void diag(const std::string &msg) {
-    diag(msg.c_str());
-}
-
-/**
  * flexible is() based on C++ template.
  */
 template <class T>
@@ -82,6 +104,14 @@ inline NANOTAP_DECLARE void is(const T& got, const T& expected, const char *msg)
         std::cout << "  # got      : " << got << std::endl;
         std::cout << "  # expected : " << expected << std::endl;
     }
+}
+
+/**
+ * shorthand for lazy person
+ */
+template <class T>
+inline NANOTAP_DECLARE void is(const T& got, const T& expected, const std::string& msg) {
+    is(got, expected, msg.c_str());
 }
 
 inline NANOTAP_DECLARE void is(const std::string& got, const char *expected, const char *msg) {
