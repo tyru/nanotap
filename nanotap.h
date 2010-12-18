@@ -45,7 +45,7 @@ NANOTAP_INLINE NANOTAP_DECLARE void diag(const char *msg) {
 /**
  * shorthand for std::string
  */
-inline NANOTAP_DECLARE void diag(const std::string &msg) {
+NANOTAP_INLINE NANOTAP_DECLARE void diag(const std::string &msg) {
     diag(msg.c_str());
 }
 
@@ -96,7 +96,7 @@ NANOTAP_INLINE NANOTAP_DECLARE void done_testing() {
  * flexible is() based on C++ template.
  */
 template <class T>
-inline NANOTAP_DECLARE void is(const T& got, const T& expected, const char *msg) {
+NANOTAP_INLINE NANOTAP_DECLARE void is(const T& got, const T& expected, const char *msg) {
     if (got == expected) {
         ok(true, msg);
     } else {
@@ -110,20 +110,20 @@ inline NANOTAP_DECLARE void is(const T& got, const T& expected, const char *msg)
  * shorthand for lazy person
  */
 template <class T>
-inline NANOTAP_DECLARE void is(const T& got, const T& expected, const std::string& msg) {
+NANOTAP_INLINE NANOTAP_DECLARE void is(const T& got, const T& expected, const std::string& msg) {
     is(got, expected, msg.c_str());
 }
 
-inline NANOTAP_DECLARE void is(const std::string& got, const char *expected, const char *msg) {
+NANOTAP_INLINE NANOTAP_DECLARE void is(const std::string& got, const char *expected, const char *msg) {
     is(got, std::string(expected), msg);
 }
 
-inline NANOTAP_DECLARE void is(const char* got, const std::string & expected, const char *msg) {
+NANOTAP_INLINE NANOTAP_DECLARE void is(const char* got, const std::string & expected, const char *msg) {
     is(std::string(got), expected, msg);
 }
 
 template <class T, class U>
-inline NANOTAP_DECLARE void is(const T& got, const U& expected) {
+NANOTAP_INLINE NANOTAP_DECLARE void is(const T& got, const U& expected) {
     is(got, std::string(expected), NULL);
 }
 
@@ -131,21 +131,21 @@ inline NANOTAP_DECLARE void is(const T& got, const U& expected) {
  * shorthand for lazy person
  */
 template <class T>
-inline NANOTAP_DECLARE void is(const T& got, const T& expected) {
+NANOTAP_INLINE NANOTAP_DECLARE void is(const T& got, const T& expected) {
     is(got, expected, NULL);
 }
 
 /**
  * shorthand for lazy person
  */
-inline NANOTAP_DECLARE void ok(int x) {
+NANOTAP_INLINE NANOTAP_DECLARE void ok(int x) {
     ok(x, "");
 }
 
 /**
  * shorthand for std::string
  */
-inline NANOTAP_DECLARE void contains_string(const std::string &str, const char *substr, const char *msg) {
+NANOTAP_INLINE NANOTAP_DECLARE void contains_string(const std::string &str, const char *substr, const char *msg) {
     contains_string(str.c_str(), substr, msg);
 }
 
@@ -154,7 +154,7 @@ inline NANOTAP_DECLARE void contains_string(const std::string &str, const char *
 /**
  * test binary string
  */
-inline NANOTAP_DECLARE void is_binary(const std::string &got, const std::string& expected, const char *msg) {
+NANOTAP_INLINE NANOTAP_DECLARE void is_binary(const std::string &got, const std::string& expected, const char *msg) {
     if (got.size() != expected.size()) {
         ok(NULL, msg);
         std::stringstream ss;
