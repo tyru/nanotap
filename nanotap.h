@@ -17,6 +17,12 @@
 #define NANOTAP_INLINE __inline__
 #endif
 
+#ifdef __GNUC__
+#define NANOTAP_NORETURN __attribute__((noreturn))
+#else
+#define NANOTAP_NORETURN
+#endif
+
 static int TEST_COUNT = 0;
 
 /**
@@ -81,7 +87,7 @@ NANOTAP_INLINE NANOTAP_DECLARE void contains_string(const char *string, const ch
  *  If you don't know how many tests you're going to run, you can issue
  * the plan when you're done running tests.
  */
-NANOTAP_INLINE NANOTAP_DECLARE void done_testing() {
+NANOTAP_NORETURN NANOTAP_INLINE NANOTAP_DECLARE void done_testing() {
     printf("1..%d\n", TEST_COUNT);
     exit(0);
 }
