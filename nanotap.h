@@ -19,6 +19,8 @@
 
 #ifdef __GNUC__
 #define NANOTAP_NORETURN __attribute__((noreturn))
+#elif defined(WIN32) || defined(WIN64)
+#define NANOTAP_NORETURN __declspec(noreturn)
 #else
 #define NANOTAP_NORETURN
 #endif
